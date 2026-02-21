@@ -8,6 +8,8 @@ Simple, research-focused static portfolio site.
 - Styling: `styles.css`
 - Script: `script.js`
 - Personalization checklist: `changes.md`
+Deployable static portfolio website for GitHub Pages.
+
 
 ## Local preview
 
@@ -25,4 +27,4 @@ Open `http://localhost:8000`.
 
 Site URL pattern:
 
-- `https://<your-github-username>.github.io/Portfolio/`
+- `https://pupking.github.io/Portfolio/`

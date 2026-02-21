@@ -4,76 +4,184 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Harsha — HPC & Quantum Computing</title>
-    <meta name="description" content="Portfolio of Harsha: HPC, GPU performance, and quantum simulation." />
+    <meta
+      name="description"
+      content="Portfolio of Harsha: GPU performance engineering, block-sparse tensor contractions, quantum circuit simulation."
+    />
+    <meta property="og:title" content="Harsha — Portfolio" />
+    <meta
+      property="og:description"
+      content="HPC, GPU kernels, tensor networks, quantum computing."
+    />
+    <meta property="og:type" content="website" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <a class="skip" href="#main">Skip to content</a>
+
     <header class="site-header">
       <div class="container header-row">
-        <div>
-          <h1 class="name">Harsha</h1>
-          <p class="tag">HPC • GPU Performance • Quantum Simulation</p>
+        <div class="brand">
+          <div class="avatar" aria-hidden="true">H</div>
+          <div>
+            <div class="name">Harsha</div>
+            <div class="tag">HPC • GPU Performance • Quantum Simulation</div>
+          </div>
         </div>
+
         <nav class="nav">
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
+          <button id="themeBtn" class="btn small" type="button" aria-label="Toggle theme">Theme</button>
         </nav>
       </div>
     </header>
 
-    <main>
-      <section class="hero section">
-        <div class="container two-col">
+    <main id="main">
+      <section class="hero">
+        <div class="container hero-grid">
           <div>
-            <h2>Research-focused engineer building high-performance GPU systems.</h2>
-            <p>
-              M.S. CS @ NCSU (May 2026). Focus areas: block-sparse tensor contractions,
-              kernel optimization, and quantum simulation.
+            <h1>
+              I build fast GPU systems for tensor workloads
+              <span class="muted">and quantum circuit simulation.</span>
+            </h1>
+
+            <p class="lead">
+              M.S. CS @ NCSU (graduating May 9, 2026). Focus: block-sparse tensor contractions,
+              CUTLASS/cuTensorNet, profiling & kernel optimization, tensor-network simulation.
             </p>
+
             <div class="cta-row">
-              <a class="btn" href="#projects">View Projects</a>
-              <a class="btn" href="./assets/Harsha_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+              <a class="btn primary" href="#projects">See projects</a>
+              <a class="btn" href="./assets/Harsha_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+              <a class="btn" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+
+            <div class="chips">
+              <span class="chip">CUDA</span>
+              <span class="chip">CUTLASS</span>
+              <span class="chip">Nsight Compute</span>
+              <span class="chip">cuTensorNet</span>
+              <span class="chip">MPI/OpenMP</span>
+              <span class="chip">Qiskit</span>
             </div>
           </div>
-          <img class="hero-image" src="https://placehold.co/640x380?text=Profile+or+Lab+Photo" alt="Placeholder hero image" />
+
+          <div class="panel">
+            <h2 class="panel-title">What I’m looking for</h2>
+            <ul class="clean">
+              <li>Summer internship (HPC / GPU / Quantum simulation)</li>
+              <li>Research-heavy roles and systems work</li>
+              <li>Teams shipping kernels, libraries, or simulators</li>
+            </ul>
+            <div class="panel-footer">
+              <a class="btn small" href="#contact">Contact me</a>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="about" class="section">
-        <div class="container two-col">
-          <div>
-            <h2>About</h2>
+        <div class="container">
+          <h2>About</h2>
+          <div class="two-col">
             <p>
-              I work on practical performance improvements for tensor workloads and simulation pipelines.
-              I enjoy profiling, benchmarking, and translating research ideas into maintainable code.
+              I’m a GPU-focused systems builder working on high-performance tensor operations:
+              block-sparse contractions, mode-ordering/layout exploration, and kernel selection
+              (single GEMM / grouped GEMM / GETT-style strategies). I also work on quantum &
+              tensor-network simulation.
             </p>
+            <div class="info-card">
+              <div><strong>Location:</strong> Raleigh, NC</div>
+              <div><strong>Graduation:</strong> May 9, 2026</div>
+              <div>
+                <strong>Interests:</strong> HPC libraries, GPU kernels, tensor networks, quantum
+                algorithms
+              </div>
+            </div>
           </div>
-          <img class="section-image" src="https://placehold.co/520x320?text=About+Image" alt="Placeholder about image" />
         </div>
       </section>
 
       <section id="projects" class="section">
         <div class="container">
-          <h2>Projects</h2>
-          <div class="grid">
-            <article class="card">
-              <img src="https://placehold.co/560x280?text=Project+1" alt="Placeholder project image" />
+          <div class="section-head">
+            <h2>Projects</h2>
+            <div class="controls">
+              <input
+                id="search"
+                class="input"
+                type="search"
+                placeholder="Filter projects…"
+                aria-label="Filter projects"
+              />
+            </div>
+          </div>
+
+          <div id="projectGrid" class="grid">
+            <article class="card" data-tags="cuda cutlass tensor block-sparse kernels">
               <h3>Block-Sparse Tensor Contraction on GPUs</h3>
-              <p>CUDA + CUTLASS optimization and kernel strategy evaluation.</p>
+              <p>
+                Kernel selection across single/grouped GEMM & GETT-like paths. Layout + tile search,
+                shared-memory staging, pipeline tuning, tensor-core usage where applicable.
+              </p>
+              <ul class="meta">
+                <li><strong>Stack:</strong> CUDA, CUTLASS, Nsight</li>
+                <li><strong>Focus:</strong> perf modeling, mode ordering, reuse analysis</li>
+              </ul>
+              <div class="card-actions">
+                <a class="btn small" href="#" target="_blank" rel="noopener">Code</a>
+                <a class="btn small" href="#" target="_blank" rel="noopener">Write-up</a>
+              </div>
             </article>
 
-            <article class="card">
-              <img src="https://placehold.co/560x280?text=Project+2" alt="Placeholder project image" />
+            <article class="card" data-tags="quantum cutensornet simulation mps">
               <h3>Tensor-Network / cuTensorNet Experiments</h3>
-              <p>Contraction correctness checks and performance exploration.</p>
+              <p>
+                Random MPS generation + contraction validation, statevector checks, and early work on
+                circuit-to-TN mapping.
+              </p>
+              <ul class="meta">
+                <li><strong>Stack:</strong> cuTensorNet, C++</li>
+                <li><strong>Focus:</strong> correctness harness + performance exploration</li>
+              </ul>
+              <div class="card-actions">
+                <a class="btn small" href="#" target="_blank" rel="noopener">Code</a>
+              </div>
             </article>
 
-            <article class="card">
-              <img src="https://placehold.co/560x280?text=Project+3" alt="Placeholder project image" />
+            <article class="card" data-tags="gpu profiling ncu roofline">
               <h3>GPU Profiling Playbook</h3>
-              <p>Reusable profiling workflow for iterative kernel improvements.</p>
+              <p>
+                Nsight Compute metric sets, roofline-style diagnosis, and step-by-step kernel
+                iteration workflow.
+              </p>
+              <ul class="meta">
+                <li><strong>Stack:</strong> Nsight Compute/Systems</li>
+                <li><strong>Focus:</strong> bottleneck isolation</li>
+              </ul>
+              <div class="card-actions">
+                <a class="btn small" href="#" target="_blank" rel="noopener">Notes</a>
+              </div>
+            </article>
+
+            <article class="card" data-tags="quantum qiskit algorithms">
+              <h3>Quantum Algorithms Prototypes</h3>
+              <p>
+                Prototyped quantum algorithm pipelines (e.g., VQ-style ideas, circuit analysis) with
+                emphasis on simulation cost and structure.
+              </p>
+              <ul class="meta">
+                <li><strong>Stack:</strong> Qiskit, Python</li>
+                <li><strong>Focus:</strong> circuit structure & cost</li>
+              </ul>
+              <div class="card-actions">
+                <a class="btn small" href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
             </article>
           </div>
         </div>
@@ -82,28 +190,88 @@
       <section id="publications" class="section">
         <div class="container">
           <h2>Publications</h2>
-          <ul class="simple-list">
-            <li>SPIE 2025 — Quantum wavelet transform/compression (add citation + link)</li>
-            <li>QMI 2024 — Underwater QCNN work (add citation + link)</li>
-          </ul>
+          <div class="list">
+            <div class="list-item">
+              <div class="list-title">Quantum wavelet transform / compression work (SPIE 2025)</div>
+              <div class="list-sub">Add citation + PDF link</div>
+            </div>
+            <div class="list-item">
+              <div class="list-title">Underwater QCNN / related work (QMI 2024)</div>
+              <div class="list-sub">Add citation + PDF link</div>
+            </div>
+          </div>
+          <p class="muted small">
+            Tip: link to arXiv / publisher page, and include one-line “what it proved” per paper.
+          </p>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="container">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <div class="t-item">
+              <div class="t-when">2025–2026</div>
+              <div class="t-what">
+                <div class="t-title">Research — GPU tensor workloads</div>
+                <div class="t-desc">Block-sparse contraction strategies, profiling, CUTLASS integration.</div>
+              </div>
+            </div>
+            <div class="t-item">
+              <div class="t-when">2024–2025</div>
+              <div class="t-what">
+                <div class="t-title">Research Assistant — quantum algorithms</div>
+                <div class="t-desc">Algorithm prototypes and simulation-oriented analysis.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="contact" class="section">
-        <div class="container two-col">
-          <div>
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:sdevera@ncsu.edu">sdevera@ncsu.edu</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noopener">profile</a></p>
-            <p>GitHub: <a href="https://github.com/" target="_blank" rel="noopener">profile</a></p>
+        <div class="container">
+          <h2>Contact</h2>
+          <div class="two-col">
+            <div class="info-card">
+              <div>
+                <strong>Email:</strong> <a href="mailto:sdevera@ncsu.edu">sdevera@ncsu.edu</a>
+              </div>
+              <div>
+                <strong>LinkedIn:</strong>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener">profile</a>
+              </div>
+              <div>
+                <strong>GitHub:</strong>
+                <a href="https://github.com/" target="_blank" rel="noopener">profile</a>
+              </div>
+            </div>
+
+            <form class="form" action="https://formspree.io/f/your-id" method="POST">
+              <label>
+                Name
+                <input class="input" name="name" required />
+              </label>
+              <label>
+                Email
+                <input class="input" name="email" type="email" required />
+              </label>
+              <label>
+                Message
+                <textarea class="input" name="message" rows="5" required></textarea>
+              </label>
+              <button class="btn primary" type="submit">Send</button>
+              <p class="muted small">Replace the Formspree URL with your own (free).</p>
+            </form>
           </div>
-          <img class="section-image" src="https://placehold.co/520x320?text=Contact+or+Conference+Photo" alt="Placeholder contact image" />
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container">© <span id="year"></span> Harsha</div>
+      <div class="container footer-row">
+        <div>© <span id="year"></span> Harsha</div>
+        <div class="muted small">Built as a static site. Fast to load. Easy to maintain.</div>
+      </div>
     </footer>
 
     <script src="./script.js"></script>
