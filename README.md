@@ -1,6 +1,15 @@
 # Portfolio
 
+Simple, research-focused static portfolio site.
+
+## Edit quickly
+
+- Main content: `index.html`
+- Styling: `styles.css`
+- Script: `script.js`
+- Personalization checklist: `changes.md`
 Deployable static portfolio website for GitHub Pages.
+
 
 ## Local preview
 
@@ -8,7 +17,7 @@ Deployable static portfolio website for GitHub Pages.
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Open `http://localhost:8000`.
 
 ## Deploy to GitHub Pages
 
@@ -16,8 +25,6 @@ Then open `http://localhost:8000`.
 2. In **Settings → Pages**, set **Source** to **GitHub Actions**.
 3. Push to `main` (or run the workflow manually).
 
-Your live site URL will be:
+Site URL pattern:
 
-- `https://<your-github-username>.github.io/Portfolio/`
-
-If your repo name changes, replace `Portfolio` with the new repository name.
+- `https://pupking.github.io/Portfolio/`
